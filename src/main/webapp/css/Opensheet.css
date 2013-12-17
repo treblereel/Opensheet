@@ -1,0 +1,78 @@
+.icon-opensheet {
+	background-image:
+		url(../resources/images/nuvola/16x16/apps/korganizer.png) !important;
+}
+
+.icon-fd {
+	background-image: url(../resources/images/nuvola/16x16/apps/xcalc.png)
+		!important;
+}
+
+.icon-pm {
+	background-image:
+		url(../resources/images/nuvola/16x16/apps/kworldclock.png) !important;
+}
+
+.icon-dm {
+	background-image: url(../resources/images/nuvola/16x16/apps/kuser.png)
+		!important;
+}
+
+.icon-admin {
+	background-image: url(../resources/images/nuvola/16x16/apps/ksim.png)
+		!important;
+}
+
+.icon-logout {
+	background-image: url(../resources/images/nuvola/16x16/apps/core.png)
+		!important;
+}
+
+.icon-user {
+	background-image:
+		url(../resources/images/nuvola/16x16/apps/personal.png) !important;
+}
+
+.icon-printer {
+	background-image:
+		url(../resources/images/nuvola/16x16/devices/print_printer.png)
+		!important;
+}
+
+.x-treegrid-column-holiday {
+	background-color: #CBEBEC;
+}
+
+.x-treegrid-column-noholiday {
+}
+
+.x-treegrid-column-outoforder {
+	background-color: #FCDB95;
+}
+
+.privMonthButton {
+	background-image: url(../resources/images/gxt/icons/page-prev.gif)
+		!important;
+}
+
+.nextMonthButton {
+	background-image: url(../resources/images/gxt/icons/page-next.gif)
+		!important;
+}
+
+.calendar-selected {
+	background-color: green;
+	color: green;
+	background-color: #dfecfb;
+	background-image: url(../resources/images/default/shared/glass-bg.gif);
+	border-color: #8db2e3;
+}
+
+.okImage {
+	background-image: url(../resources/icons/add.gif) !important;
+}
+
+.border-collapse {
+	border-collapse: collapse;
+	table-layout: fixed;
+}

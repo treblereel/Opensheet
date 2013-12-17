@@ -1,0 +1,88 @@
+<!--
+  Copyright (c) 2012 Dmitry Tikhomirov.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the GNU Public License v3.0
+  which accompanies this distribution, and is available at
+  http://www.gnu.org/licenses/gpl.html
+  
+  Contributors:
+      Dmitry Tikhomirov - initial API and implementation
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xsi:schemaLocation="
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd">
+
+    <context:component-scan base-package="org.opensheet.server" >
+	</context:component-scan>
+	
+	<context:annotation-config/>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionManager"	class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+  
+	<bean id="propertyConfigurer"	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="/WEB-INF/jdbc.properties" />
+
+
+
+	<bean id="dataSource" 	class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="${jdbc.driverClassName}" 
+		p:url="${jdbc.databaseurl}"
+		p:username="${jdbc.username}" 
+		p:password="${jdbc.password}" />
+
+	
+	<bean id="sessionFactory" 	class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="org.opensheet.shared.model"/>
+		<property name="configurationClass">
+			<value>org.hibernate.cfg.AnnotationConfiguration</value>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+				<prop key="hibernate.connection.charSet">UTF-8</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>  
+			</props>
+		</property>
+		<property name="eventListeners">
+            <map>
+                <entry key="post-insert" value-ref="auditEventListener"/>
+                <entry key="post-update" value-ref="auditEventListener"/>
+                <entry key="post-delete" value-ref="auditEventListener"/>
+                <entry key="pre-collection-update" value-ref="auditEventListener"/>
+                <entry key="pre-collection-remove" value-ref="auditEventListener"/>
+                <entry key="post-collection-recreate" value-ref="auditEventListener"/>
+            </map>
+        </property>
+ 
+	</bean>
+    
+     <bean id="auditEventListener" class="org.hibernate.envers.event.AuditEventListener"/>
+    
+
+</beans>

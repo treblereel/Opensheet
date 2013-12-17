@@ -1,0 +1,33 @@
+<!--
+  Copyright (c) 2012 Dmitry Tikhomirov.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the GNU Public License v3.0
+  which accompanies this distribution, and is available at
+  http://www.gnu.org/licenses/gpl.html
+  
+  Contributors:
+      Dmitry Tikhomirov - initial API and implementation
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+ 
+
+ 
+ <bean id="timesheettoxlsview"  	                class="org.opensheet.server.exports.TimesheetToXlsView" />
+ <bean id="userassignmentreporttoxlsview"  	        class="org.opensheet.server.exports.UserAssignmentReportToXlsView" />
+ <bean id="reportdepartmentassignmenttoxlsview"  	class="org.opensheet.server.exports.ReportDepartmentAssignemntToXlsView" />
+
+<!-- department managers report, by assignment on period -->
+ <bean id="departmentreporttoxlsview"  	class="org.opensheet.server.exports.UserAssignmentByPeriodReportToXls" />
+ 
+<bean id="quickdepartmentreportbyassignmentandbyuserview"  	class="org.opensheet.server.exports.QuickDepartmentReportByAssignmentAndByUserView" />
+	
+	
+<bean id="userassignmenttoxlsview"  	class="org.opensheet.server.exports.AssignmnetUsersToXlsView" />
+	
+<bean id="departmentassignmenttoxlsview"  	class="org.opensheet.server.exports.DepartmentAssignmentToXlsView" />
+ 
+ 
+</beans>
