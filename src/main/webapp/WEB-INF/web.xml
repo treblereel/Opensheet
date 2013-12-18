@@ -81,29 +81,12 @@
   	     <url-pattern>/*</url-pattern>
     </filter-mapping>
   
-    
-    <filter>
-      <filter-name>hibernateFilter</filter-name>
-      <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
-      <init-param>
-         <param-name>sessionFactoryBeanName</param-name>
-         <param-value>sessionFactory</param-value>         
-      </init-param>      
-   </filter>
-
-   <filter-mapping>
-     	<filter-name>hibernateFilter</filter-name>
-    	<url-pattern>/opensheet/*</url-pattern>
-    	<dispatcher>REQUEST</dispatcher>
-    	<dispatcher>FORWARD</dispatcher>
-   </filter-mapping> 
-  
-    <welcome-file-list>
+     <welcome-file-list>
     	<welcome-file>Opensheet.htm</welcome-file>
     </welcome-file-list>
 
 	<session-config>
-	    <session-timeout>15</session-timeout>
+	    <session-timeout>25</session-timeout>
 	</session-config>
 	
 </web-app>

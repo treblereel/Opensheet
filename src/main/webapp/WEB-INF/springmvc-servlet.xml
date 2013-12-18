@@ -23,8 +23,6 @@
 	<context:component-scan base-package="org.opensheet.mvc" />
 	<mvc:annotation-driven />
 
-
-
 	 <bean class="org.springframework.web.servlet.view.XmlViewResolver">
 			   <property name="location">
 			       <value>/WEB-INF/spring-excel-views.xml</value>
@@ -32,9 +30,6 @@
 			   <property name="order" value="0" />
 		</bean>
 
-<!--  
-	<mvc:view-controller path="/" view-name="Opensheet.htm"/>
- -->
 	<mvc:interceptors>
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
 	</mvc:interceptors>
@@ -43,12 +38,6 @@
 
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
 
-<!--  
-	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basename" value="/WEB-INF/messages/messages" />
-		<property name="cacheSeconds" value="0" />
-	</bean>
--->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/jsp/"/>
 		<property name="suffix" value=".jsp"/>
