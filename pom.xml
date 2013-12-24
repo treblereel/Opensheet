@@ -134,6 +134,17 @@
 
 	</dependencies>
 	<build>
+	    <resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.sql</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
 		<outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>

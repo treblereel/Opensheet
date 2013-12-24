@@ -35,18 +35,13 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	
-	
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:messages" />
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 
-  
 	<bean id="propertyConfigurer"	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 		p:location="/WEB-INF/jdbc.properties" />
-
-
 
 	<bean id="dataSource" 	class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		p:driverClassName="${jdbc.driverClassName}" 
@@ -54,7 +49,6 @@
 		p:username="${jdbc.username}" 
 		p:password="${jdbc.password}" />
 
-	
 	<bean id="sessionFactory" 	class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="org.opensheet.shared.model"/>
@@ -66,7 +60,7 @@
 				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
 				<prop key="hibernate.connection.charSet">UTF-8</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>  
+				<prop key="hibernate.hbm2ddl.auto">create</prop>  
 			</props>
 		</property>
 		<property name="eventListeners">
@@ -83,6 +77,5 @@
 	</bean>
     
      <bean id="auditEventListener" class="org.hibernate.envers.event.AuditEventListener"/>
-    
 
 </beans>
